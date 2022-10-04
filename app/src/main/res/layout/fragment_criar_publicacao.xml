@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".criarPublicacaoFragment">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="231dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="48dp"
+        android:text="Criar Publicação"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTitulo"
+        style="@style/Edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:hint="Título"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/editTexto"
+        style="@style/Edit_text"
+        android:layout_width="333dp"
+        android:layout_height="107dp"
+        android:layout_marginTop="35dp"
+        android:hint="Texto"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTitulo" />
+
+    <Button
+        android:id="@+id/btnCriarPublicacao"
+        style="@style/Button"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="68dp"
+        android:text="Criar"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTexto" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
