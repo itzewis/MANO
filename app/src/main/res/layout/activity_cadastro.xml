@@ -8,6 +8,16 @@
     tools:context=".Cadastro">
 
 
+    <ImageView
+        android:id="@+id/btnFoto"
+        android:layout_width="158dp"
+        android:layout_height="112dp"
+        android:src="@drawable/ic_camera2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp" />
+
     <View
         android:id="@+id/componentes_entrada"
         style="@style/container"
@@ -66,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:hint="Senha"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editEmailC" />
@@ -77,6 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:hint="Confirmar Senha"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editSenhaC" />
@@ -94,17 +106,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editConfirmarSenha" />
-
-    <ImageView
-        android:id="@+id/colocarFoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textView"

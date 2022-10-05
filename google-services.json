@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "296084342693",
+    "project_id": "mano-e4ef6",
+    "storage_bucket": "mano-e4ef6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296084342693:android:812a7257b358a93c7a4a4c",
+        "android_client_info": {
+          "package_name": "com.example.chatapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296084342693-3euo3r2ivbnv2p6m9i8h5tde39mgbehu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtKEi3n_jp2pfIvnhHzcLAjwBMDt0dwxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296084342693-3euo3r2ivbnv2p6m9i8h5tde39mgbehu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

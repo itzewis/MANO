@@ -31,8 +31,8 @@
                     android:id="@+id/imgUser"
                     android:layout_width="53dp"
                     android:layout_height="44dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,8 +40,8 @@
                     android:id="@+id/nomeUser"
                     android:layout_width="123dp"
                     android:layout_height="29dp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
                     android:text="Olá,"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -55,11 +55,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginTop="104dp"
+                    android:layout_marginTop="68dp"
                     android:drawableStart="@drawable/ic_pesuisa"
+                    android:focusableInTouchMode="true"
                     android:hint="Pesquisa..."
+                    android:inputType=""
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.8"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

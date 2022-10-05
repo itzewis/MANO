@@ -11,5 +11,4 @@ class Usuario {
         this.email = email
         this.id = id
     }
-
 }

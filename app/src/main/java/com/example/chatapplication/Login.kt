@@ -37,15 +37,18 @@ class Login : AppCompatActivity() {
         cadastro.setOnClickListener {
             val intent = Intent(this, Cadastro::class.java)
             startActivity(intent)
-
-
         }
 
         btnEntrar.setOnClickListener {
             val email = editEmail.text.toString()
             val senha = editSenha.text.toString()
 
-            entrar(email, senha);
+            if (senha.isNotBlank() && email.isNotEmpty()){
+                entrar(email, senha);
+            }
+            else{
+                Toast.makeText(applicationContext, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
