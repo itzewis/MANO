@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#F5f7f7"
     tools:context=".criarPublicacaoFragment">
 
     <TextView
@@ -13,6 +13,7 @@
         android:layout_height="43dp"
         android:layout_marginTop="48dp"
         android:text="Criar Publicação"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="30sp"
@@ -35,12 +36,15 @@
     <EditText
         android:id="@+id/editTexto"
         style="@style/Edit_text"
-        android:layout_width="332dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="35dp"
+        android:layout_width="329dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="32dp"
+        android:textAlignment="textStart"
         android:hint="Texto"
+        android:lines="10"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTitulo" />
 
@@ -51,6 +55,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="68dp"
         android:text="Criar"
+        android:textSize="20sp"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

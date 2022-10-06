@@ -43,12 +43,15 @@ class Cadastro : AppCompatActivity() {
         editConfirmarsenha = findViewById(R.id.editConfirmarSenha)
         btnCriarConta = findViewById(R.id.btnCriarConta)
         text_login = findViewById(R.id.text_login)
-        btnCamera = findViewById(R.id.btnFoto)
+        btnCamera = findViewById(R.id.btnCamera)
+
 
         btnCriarConta.setOnClickListener{
             val nome  = editNomeC.text.toString()
             val email = editEmailC.text.toString()
             val senha = editSenhaC.text.toString()
+
+
 
             criarConta(nome, email, senha)
         }
@@ -65,6 +68,8 @@ class Cadastro : AppCompatActivity() {
         }
 
     }
+
+
     private fun criarConta(nome: String, email: String, senha: String) {
         mAuth.createUserWithEmailAndPassword(email, senha)
             .addOnCompleteListener(this) { task ->
