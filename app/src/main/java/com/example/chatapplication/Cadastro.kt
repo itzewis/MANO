@@ -50,10 +50,18 @@ class Cadastro : AppCompatActivity() {
             val nome  = editNomeC.text.toString()
             val email = editEmailC.text.toString()
             val senha = editSenhaC.text.toString()
+            val confsenha = editConfirmarsenha.text.toString()
 
+            if(senha.isNotEmpty() && email.isNotEmpty() && nome.isNotEmpty() && confsenha.isNotEmpty()) {
+                if(senha == (confsenha)){
+                    criarConta(nome, email, senha)
+                }else{
+                    editConfirmarsenha.setError("Senhas não correspondem")
+                }
+            }else{
+                Toast.makeText(this, "Preecha todos os campos", Toast.LENGTH_SHORT).show()
+            }
 
-
-            criarConta(nome, email, senha)
         }
 
         btnCamera.setOnClickListener{

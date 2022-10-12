@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home_Fragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewOla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="54dp"
+            android:text="Olá,"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/editxtPesquisar"
+            style="@style/Edit_text"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewOla"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="20dp"
+            android:maxLines="1"
+            android:drawableStart="@drawable/ic_pesuisa"
+            android:hint="Buscar..." />
+
+        <ImageView
+            android:id="@+id/btnNotificacao"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_notificacao" />
+
+    </RelativeLayout>
+
+
+
+</FrameLayout>
