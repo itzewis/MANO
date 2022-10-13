@@ -2,6 +2,7 @@ package com.example.chatapplication
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -9,93 +10,85 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import com.example.chatapplication.databinding.ActivityCadastroBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import java.util.*
 
 
 class Cadastro : AppCompatActivity() {
 
+    private lateinit var binding: ActivityCadastroBinding
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var storage : FirebaseStorage
+    private lateinit var bancoD: FirebaseDatabase
+    private lateinit var caixaDialogo : AlertDialog.Builder
+    private lateinit var selecionarFoto : Uri
     private lateinit var editNomeC: EditText
     private lateinit var editEmailC: EditText
     private lateinit var editSenhaC: EditText
-    private lateinit var editConfirmarsenha: EditText
+    private lateinit var editRua: EditText
     private lateinit var btnCriarConta: Button
     private lateinit var text_login: TextView
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var mDbRef: DatabaseReference
     private lateinit var btnCamera: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cadastro)
+        binding = ActivityCadastroBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        supportActionBar?.hide()
-
-        var COD_REQ: Int = 101
-        var imageBitmap: Bitmap? = null
-
+        storage = FirebaseStorage.getInstance()
+        bancoD = FirebaseDatabase.getInstance()
         mAuth = FirebaseAuth.getInstance()
+        val uid = mAuth.currentUser?.uid
 
-        editNomeC = findViewById(R.id.editNomeC)
-        editEmailC = findViewById(R.id.editEmailC)
-        editSenhaC = findViewById(R.id.editSenhaC)
-        editConfirmarsenha = findViewById(R.id.editConfirmarSenha)
-        btnCriarConta = findViewById(R.id.btnCriarConta)
-        text_login = findViewById(R.id.text_login)
-        btnCamera = findViewById(R.id.btnCamera)
+        caixaDialogo = AlertDialog.Builder(this)
+            .setMessage("Carregando Imagem...")
+            .setCancelable(false)
 
+      binding.btnCamera.setOnClickListener{
+          val intent = Intent()
+          intent.action = Intent.ACTION_GET_CONTENT
+          intent.type = "image/*"
+          startActivityForResult(intent,1)
+      }
 
-        btnCriarConta.setOnClickListener{
-            val nome  = editNomeC.text.toString()
-            val email = editEmailC.text.toString()
-            val senha = editSenhaC.text.toString()
-            val confsenha = editConfirmarsenha.text.toString()
+         binding.btnCriarConta.setOnClickListener {
+             if(binding.editSenhaC.text.toString().isEmpty() || binding.editRua.text.toString().isEmpty() ||
+                     binding.editEmailC.text.toString().isEmpty() || binding.editNomeC.text.toString().isEmpty()){
+                 Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
 
-            if(senha.isNotEmpty() && email.isNotEmpty() && nome.isNotEmpty() && confsenha.isNotEmpty()) {
-                if(senha == (confsenha)){
-                    criarConta(nome, email, senha)
-                }else{
-                    editConfirmarsenha.setError("Senhas não correspondem")
-                }
-            }else{
-                Toast.makeText(this, "Preecha todos os campos", Toast.LENGTH_SHORT).show()
-            }
-
-        }
-
-        btnCamera.setOnClickListener{
-            val intentGaleria = Intent(Intent.ACTION_GET_CONTENT)
-            intentGaleria.type = "image/*"
-            startActivityForResult(Intent.createChooser(intentGaleria, "Selecione uma imagem"), COD_REQ)
-        }
-
-        text_login.setOnClickListener {
-            val intent = Intent(this,Login::class.java)
-            startActivity(intent)
+                 if(binding.editSenhaC.text.toString().length <= 4){
+                     binding.editSenhaC.setError("Minimo 6 caracteres")
+                 }
+             }
         }
 
     }
 
+    private fun criarConta(){
+        val reference = storage.reference.child("Foto").child(Date().time.toString())
+        reference.putFile(selecionarFoto).addOnCompleteListener{
 
-    private fun criarConta(nome: String, email: String, senha: String) {
-        mAuth.createUserWithEmailAndPassword(email, senha)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    addUsuarioToDatabase(nome, email, mAuth.currentUser?.uid!!)
-                    val intent = Intent(this@Cadastro, inicial::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    Toast.makeText(this@Cadastro, "Ocorreu um erro", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
+        }
     }
 
-    private fun addUsuarioToDatabase(nome: String, email: String, uid: String){
-        mDbRef = FirebaseDatabase.getInstance().getReference()
-        mDbRef.child("usuario").child(uid).setValue(Usuario(nome, email, uid))
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (data != null ){
+            if (data.data != null){
+                selecionarFoto = data.data!!
+
+                binding.btnCamera.setImageURI(selecionarFoto)
+
+            }
+        }
+
     }
 
 }

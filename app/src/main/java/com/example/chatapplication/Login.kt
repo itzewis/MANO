@@ -36,6 +36,7 @@ class Login : AppCompatActivity() {
 
         cadastro.setOnClickListener {
             val intent = Intent(this, Cadastro::class.java)
+            finish()
             startActivity(intent)
         }
 

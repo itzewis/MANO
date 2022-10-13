@@ -44,8 +44,8 @@
         android:id="@+id/editEmail"
         style="@style/Edit_text"
         android:layout_marginTop="48dp"
-        android:drawableRight="@drawable/email"
-        android:hint="Email"
+        android:drawableStart="@drawable/ic_email"
+        android:hint="   Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,8 +120,8 @@
         android:id="@+id/editSenha"
         style="@style/Edit_text"
         android:layout_marginTop="40dp"
-        android:drawableRight="@drawable/olho_aberto"
-        android:hint="Senha"
+        android:drawableStart="@drawable/ic_cadeado"
+        android:hint="   Senha"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.545"
