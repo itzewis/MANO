@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "209132241193",
-    "project_id": "mano-3f208",
-    "storage_bucket": "mano-3f208.appspot.com"
+    "project_number": "967878008715",
+    "project_id": "mano-database",
+    "storage_bucket": "mano-database.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:209132241193:android:3b9b24d0c6958920357738",
+        "mobilesdk_app_id": "1:967878008715:android:1d83fb29ea003a7e97198e",
         "android_client_info": {
           "package_name": "com.example.chatapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "209132241193-7fap1f5bicm1ap0l0u58ob41egtmpm19.apps.googleusercontent.com",
+          "client_id": "967878008715-qug90bneki56443qp1kd367r2v4obm3d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB-2mniJBjki_zvayTvu-196StLTzO8tvQ"
+          "current_key": "AIzaSyDWrPaXie42SuQeG6qPmYSr61buRxjGqMk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "209132241193-7fap1f5bicm1ap0l0u58ob41egtmpm19.apps.googleusercontent.com",
+              "client_id": "967878008715-qug90bneki56443qp1kd367r2v4obm3d.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -12,6 +12,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.chatapplication.databinding.ActivityCadastroBinding
+import com.example.chatapplication.databinding.ActivityInicialBinding
+import com.example.chatapplication.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -22,18 +24,12 @@ import java.util.*
 class Cadastro : AppCompatActivity() {
 
     private lateinit var binding: ActivityCadastroBinding
-    private lateinit var mAuth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     private lateinit var storage : FirebaseStorage
     private lateinit var bancoD: FirebaseDatabase
     private lateinit var caixaDialogo : AlertDialog.Builder
     private lateinit var selecionarFoto : Uri
-    private lateinit var editNomeC: EditText
-    private lateinit var editEmailC: EditText
-    private lateinit var editSenhaC: EditText
-    private lateinit var editRua: EditText
-    private lateinit var btnCriarConta: Button
-    private lateinit var text_login: TextView
-    private lateinit var btnCamera: ImageView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +38,7 @@ class Cadastro : AppCompatActivity() {
 
         storage = FirebaseStorage.getInstance()
         bancoD = FirebaseDatabase.getInstance()
-        mAuth = FirebaseAuth.getInstance()
-        val uid = mAuth.currentUser?.uid
+        auth = FirebaseAuth.getInstance()
 
         caixaDialogo = AlertDialog.Builder(this)
             .setMessage("Carregando Imagem...")
@@ -61,8 +56,14 @@ class Cadastro : AppCompatActivity() {
                      binding.editEmailC.text.toString().isEmpty() || binding.editNomeC.text.toString().isEmpty()){
                  Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
 
-                 if(binding.editSenhaC.text.toString().length <= 4){
+                 if(binding.editSenhaC.text.toString().length < 6){
                      binding.editSenhaC.setError("Minimo 6 caracteres")
+                 }
+                 else if (selecionarFoto == null){
+                     Toast.makeText(this, "Selececione uma imagem", Toast.LENGTH_SHORT).show()
+                 }
+                 else{
+                     criarConta()
                  }
              }
         }
@@ -72,8 +73,26 @@ class Cadastro : AppCompatActivity() {
     private fun criarConta(){
         val reference = storage.reference.child("Foto").child(Date().time.toString())
         reference.putFile(selecionarFoto).addOnCompleteListener{
-
+            if(it.isSuccessful){
+                reference.downloadUrl.addOnCompleteListener { task ->
+                    uploadInfo(task.toString())
+                }      
+            }
         }
+    }
+
+    private fun uploadInfo(imgUrl: String) {
+        val usuario = Usuario(auth.uid.orEmpty(), binding.editNomeC.text.toString(), binding.editEmailC.text.toString(), binding.editRua.text.toString(),
+            imgUrl,binding.editSenhaC.text.toString())
+
+            bancoD.reference.child("users")
+                .child(auth.uid.toString())
+                .setValue(usuario)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Conta Criada", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, inicial::class.java))
+                    finish()
+                }
     }
 
 
