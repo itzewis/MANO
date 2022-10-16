@@ -1,12 +1,9 @@
 package com.example.chatapplication
 
-import android.graphics.drawable.Icon
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import com.example.chatapplication.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class inicial : AppCompatActivity() {

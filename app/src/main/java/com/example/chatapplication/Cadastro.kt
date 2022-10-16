@@ -82,7 +82,7 @@ class Cadastro : AppCompatActivity() {
     }
 
     private fun uploadInfo(imgUrl: String) {
-        val usuario = Usuario(auth.uid.orEmpty(), binding.editNomeC.text.toString(), binding.editEmailC.text.toString(), binding.editRua.text.toString(),
+        val usuario = Usuario(auth.uid.toString(), binding.editNomeC.text.toString(), binding.editEmailC.text.toString(), binding.editRua.text.toString(),
             imgUrl,binding.editSenhaC.text.toString())
 
             bancoD.reference.child("users")
